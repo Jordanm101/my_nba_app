@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import PlayerCard from './PlayerCard';
 import SearchBar from './SearchBar';
+import { BalldontlieAPI } from '@balldontlie/sdk';
+
+const api = new BalldontlieAPI({ apiKey: import.meta.env.VITE_API_KEY });
 
 function App() {
     const [players, setPlayers] = useState([]);
@@ -14,9 +17,10 @@ function App() {
 
     const fetchPlayers = async (query) => {
       try{
-        const response = await fetch(`https://www.balldontlie.io/api/v1/players?search=${query}`);
-        const data = await response.json();
-        setPlayers(data.data);
+        console.log(`Fetching players with query: ${query}`); //loge the query
+        const response = await api.nba.getPlayers({ search: query }); //fetch the players from the API
+        console.log(`API response:`, response); //log the API response
+        setPlayers(response.data);
       } catch (error) {
           console.error('Error fetching players:', error);
       }
