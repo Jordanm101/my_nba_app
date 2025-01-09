@@ -40,7 +40,10 @@ function App() {
                   <PlayerCard
                       key={player.id}
                       name={`${player.first_name} ${player.last_name}`}
-                      team={player.team.full_name}
+                      team={player.team.full_name || 'No team'}
+                      position={player.position || 'Unknown'}
+                      height={null} //Null for now because not in free API Tier
+                      weight={null} //Null for now because not in free API Tier
                   />
               ))
           ) : (

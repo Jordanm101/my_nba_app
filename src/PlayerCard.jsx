@@ -1,6 +1,6 @@
 import React from 'react';
 
-function PlayerCard({name, team }) {
+function PlayerCard({name, team, position, height, weight}) {
     return (
         <div style={{
             border: '1px solid #ddd',
@@ -10,7 +10,10 @@ function PlayerCard({name, team }) {
             boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
         }}>
             <h2>{name}</h2>
-            <p>Team: {team}</p>
+            <p><strong>Team:</strong> {team}</p>
+            <p><strong>Position:</strong> {position || 'Unknown'}</p>
+            <p><strong>Height:</strong> {height || 'Unavailable'}</p>
+            <p><strong>Weight:</strong> {weight|| 'Not available'} </p>
         </div>
     );
 }
